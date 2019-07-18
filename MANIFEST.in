@@ -1,6 +1,6 @@
 include README.md
 include docs/*.md
-include data/*.json
-include data/*.h5
-include data/*.csv
+include *.json
+include *.h5
+include *.csv
 recursive-include data *
