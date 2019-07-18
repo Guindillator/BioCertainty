@@ -1,6 +1,6 @@
 include README.md
 include docs/*.md
-include model.json
-include model.h5
-include training_Set.csv
+include data/model.json
+include data/model.h5
+include data/training_Set.csv
 recursive-include data *
