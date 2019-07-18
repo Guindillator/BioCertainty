@@ -46,8 +46,5 @@ setup(name='biocertainty',
         'pytest',
         'pytest-cov',
         'pycodestyle',
-    ],
-    extras_require={
-        'dev':  ['prospector[with_pyroma]', 'yapf', 'isort'],
-    }
+    ]
 )
