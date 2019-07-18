@@ -1,0 +1,5 @@
+include README.rst
+include docs/*.txt
+include BioCertainty/biocertainty/model.json
+include BioCertainty/biocertainty/model.h5
+include BioCertainty/biocertainty/training_set.csv
