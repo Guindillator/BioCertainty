@@ -1,5 +1,5 @@
-include README.rst
-include docs/*.txt
-include biocertainty/model.json
-include biocertainty/model.h5
-include biocertainty/training_set.csv
+include README.md
+include docs/*.md
+include biocertainty/*.json
+include biocertainty/*.h5
+include biocertainty/*.csv
