@@ -1,5 +1,6 @@
 include README.md
 include docs/*.md
-include biocertainty/*.json
-include biocertainty/*.h5
-include biocertainty/*.csv
+include data/*.json
+include data/*.h5
+include data/*.csv
+recursive-include data *
