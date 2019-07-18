@@ -33,8 +33,8 @@ setup(name='biocertainty',
     test_suite='tests',
     install_requires=requirements,
     include_package_data = True,
-#     data_files=[('biocertainty', ['data/training_set.csv'])],
-    # package_data = {'biocertainty': ['data/training_set.csv']},
+    data_files=[('', ['data/*.csv'])],
+    package_data = {'': ['data/*.csv']},
     setup_requires=[
         # dependency for `python setup.py test`
         'pytest-runner',
