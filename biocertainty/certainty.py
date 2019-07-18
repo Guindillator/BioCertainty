@@ -10,7 +10,7 @@ from keras.utils import to_categorical
 from keras.models import model_from_json
 import pkgutil
 
-training_set = pkgutil.get_data("biocertainty", "training_set.csv")
+training_set = pkgutil.get_data("", "training_set.csv")
 model_json = pkgutil.get_data("biocertainty", "model.json")
 model_h5 = pkgutil.get_data("biocertainty", "model.h5")
 
