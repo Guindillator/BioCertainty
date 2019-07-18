@@ -19,8 +19,8 @@ setup(name='biocertainty',
     author_email='mario.prieto@upm.es',	
     license='Wilkinson Laboratory',
     packages=find_packages(),
-#     package_dir={'biocertainty':
-#                  'biocertainty'},	
+    package_dir={'':
+                 'biocertainty'},	
     zip_safe=False,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
