@@ -9,13 +9,14 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
 from keras.models import model_from_json
 
-
+INPUT_FILE = os.path.dirname(os.path.abspath('training_set.csv'))
+model_json = os.path.dirname(os.path.abspath('model.json'))
+mode.h5 = os.path.dirname(os.path.abspath('model.h5'))
 
 def Certainty(statement):
     statement = statement
     MAX_NB_WORDS = 6660
     stopwords = nltk.corpus.stopwords.words('english')
-    INPUT_FILE = "training_set.csv"
 
     texts = []  # list of text samples
     labels_index = {}  # dictionary mapping label name to numeric id
@@ -45,11 +46,11 @@ def Certainty(statement):
     sequences = tokenizer.texts_to_sequences(texts_test_1)
     texts_test = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
 
-    json_file = open('model.json', 'r')
+    json_file = open(model_json, 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
-    model.load_weights("model.h5")
+    model.load_weights(model_h5)
     model.compile(loss="binary_crossentropy", optimizer="rmsprop")
 
     # Evaluate model
