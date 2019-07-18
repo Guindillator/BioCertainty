@@ -35,13 +35,6 @@ setup(name='biocertainty',
     ],
     test_suite='tests',
     install_requires=requirements,
-    setup_requires=[
-        # dependency for `python setup.py test`
-        'pytest-runner',
-        # dependencies for `python setup.py build_sphinx`
-        'sphinx',
-        'recommonmark'
-    ],
     tests_require=[
         'pytest',
         'pytest-cov',
