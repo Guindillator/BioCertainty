@@ -35,9 +35,9 @@ setup(name='biocertainty',
     ],
     test_suite='tests',
     install_requires=requirements,
-    data_files=[('biocertainty/data/', ['training_set.csv', 'model.json', 'model+.h5'])],
+    # data_files=[('biocertainty/data/', ['training_set.csv', 'model.json', 'model+.h5'])],
     # package_data={'data/': ['*.csv', '*.json', '*.h5']},
-    include_package_data = True,
+    # include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
         'pytest-runner',
