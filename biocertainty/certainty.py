@@ -2,7 +2,7 @@
 #!/usr/bin/env python
 
 
-import io
+import codecs
 import nltk
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
@@ -22,7 +22,7 @@ def Certainty(statement):
 
     texts = []  # list of text samples
     labels_index = {}  # dictionary mapping label name to numeric id
-    fin = (io.open(training_set, mode="r",  encoding='utf8')).splitlines()
+    fin = (codecs.open(training_set, "r",  encoding='utf8'))
     maxlen = 0
     for line in fin:
         print line
