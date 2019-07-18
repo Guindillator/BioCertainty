@@ -3,4 +3,3 @@ include docs/*.md
 include biocertainty/data/model.json
 include biocertainty/data/model.h5
 include biocertainty/data/training_set.csv
-recursive-include data *
