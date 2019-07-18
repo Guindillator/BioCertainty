@@ -11,7 +11,7 @@ from keras.models import model_from_json
 
 INPUT_FILE = os.path.dirname(os.path.abspath('training_set.csv'))
 model_json = os.path.dirname(os.path.abspath('model.json'))
-model.h5 = os.path.dirname(os.path.abspath('model.h5'))
+model_h5 = os.path.dirname(os.path.abspath('model.h5'))
 
 def Certainty(statement):
     statement = statement
