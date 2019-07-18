@@ -3,6 +3,7 @@
 # -*- coding: utf-8 -*-
 
 from setuptools import setup, find_packages
+import os
 
 with open('README.md') as readme_file:
     readme = readme_file.read()
