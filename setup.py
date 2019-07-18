@@ -30,14 +30,12 @@ setup(name='biocertainty',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7'
     ],
-    test_suite='tests',
     install_requires=requirements,
-#     data_files=[('', ['data/training_set.csv'])],
+    data_files=[('biocertainty', ['data/training_set.csv'])],
     package_data = {'biocertainty': ['data/training_set.csv']},
     include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
-        'pytest-runner',
         # dependencies for `python setup.py build_sphinx`
         'sphinx',
         'recommonmark'
