@@ -31,8 +31,8 @@ setup(name='biocertainty',
         'Programming Language :: Python :: 2.7'
     ],
     install_requires=requirements,
-    data_files=[('biocertainty', ['data/training_set.csv'])],
-    package_data = {'biocertainty': ['data/training_set.csv']},
+    data_files=[('lib/python2.7/site-packages/biocertainty', ['data/training_set.csv'])],
+    package_data = {'lib/python2.7/site-packages/biocertainty': ['data/training_set.csv']},
     include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
