@@ -14,7 +14,7 @@ training_set = pkgutil.get_data("", "training_set.csv")
 model_json = pkgutil.get_data("", "model.json")
 model_h5 = pkgutil.get_data("", "model.h5")
 
-
+print training_set
 def Certainty(statement):
     statement = statement
     MAX_NB_WORDS = 6660
