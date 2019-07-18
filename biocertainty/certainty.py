@@ -25,7 +25,7 @@ def Certainty(statement):
     fin = codecs.open(training_set,"r",  encoding='utf8')
     maxlen = 0
     for line in fin:
-        sent = (line.strip().replace("\n", ' ').split('\t'))[0]
+        sent = (line.strip().split('\t'))[0]
         sent = [x for x in nltk.word_tokenize(sent) if x not in stopwords]
         texts.append(' '.join(sent))
         if len(sent) > maxlen:
