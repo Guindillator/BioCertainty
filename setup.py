@@ -42,10 +42,5 @@ setup(name='biocertainty',
         # dependencies for `python setup.py build_sphinx`
         'sphinx',
         'recommonmark'
-    ],
-    tests_require=[
-        'pytest',
-        'pytest-cov',
-        'pycodestyle',
     ]
 )
