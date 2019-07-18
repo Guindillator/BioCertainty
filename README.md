@@ -1,8 +1,5 @@
 # Python Package for certainty in bio-scholarly statements
 
-## What this package does?
-TODO
-
 ## How to install the package
 Install via `pip`:
 
