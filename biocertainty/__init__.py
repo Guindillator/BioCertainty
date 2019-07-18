@@ -4,7 +4,6 @@
 from .nanopublication import Nanopublication
 from .micropublication import Micropublication
 from .certainty import Certainty
-#from .showup import showup
 
 __version__ = '0.1.0'
 __author__ = 'Mario Prieto'
