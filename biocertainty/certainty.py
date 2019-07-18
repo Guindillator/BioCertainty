@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 #!/usr/bin/env python
 
-
+import os
 import codecs
 import nltk
 from keras.preprocessing.text import Tokenizer
