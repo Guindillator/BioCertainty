@@ -35,6 +35,7 @@ setup(name='biocertainty',
     ],
     test_suite='tests',
     install_requires=requirements,
+    package_data={'': ['training_set.csv', 'model.json', 'model.h5']},
     include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
