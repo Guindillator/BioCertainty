@@ -19,9 +19,8 @@ setup(name='biocertainty',
     author='Mario Prieto',  
     author_email='mario.prieto@upm.es', 
     license='Wilkinson Laboratory',
-    packages= find_packages(),
-#     package_dir={'biocertainty':
-#                  'biocertainty'},   
+    packages= find_packages('biocertainty'),
+    package_dir={'': 'biocertainty'},   
     zip_safe=False,
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
@@ -34,7 +33,7 @@ setup(name='biocertainty',
     test_suite='tests',
     install_requires=requirements,
 #     data_files=[('', ['data/training_set.csv'])],
-#     package_data = {'': ['data/training_set.csv']},
+    package_data = {'biocertainty': ['data/training_set.csv']},
 #     include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
