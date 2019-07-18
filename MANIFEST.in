@@ -1,6 +1,6 @@
 include README.md
 include docs/*.md
-include *.json
-include *.h5
-include *.csv
+include lib/python2.7/site-packages/biocertainty/data/model.json
+include lib/python2.7/site-packages/biocertainty/data/model.h5
+include lib/python2.7/site-packages/biocertainty/data/training_Set.csv
 recursive-include data *
