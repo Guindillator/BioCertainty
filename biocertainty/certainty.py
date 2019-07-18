@@ -8,18 +8,21 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
 from keras.models import model_from_json
+import pkgutil
 
+training_set = pkgutil.get_data("biocertainty", "data/training_set.csv")
+model_json = pkgutil.get_data("biocertainty", "data/model.json")
+model_h5 = pkgutil.get_data("biocertainty", "data/model.h5")
 
 
 def Certainty(statement):
     statement = statement
     MAX_NB_WORDS = 6660
     stopwords = nltk.corpus.stopwords.words('english')
-    INPUT_FILE = "training_set.csv"
 
     texts = []  # list of text samples
     labels_index = {}  # dictionary mapping label name to numeric id
-    fin = codecs.open(INPUT_FILE,"r",  encoding='utf8')
+    fin = codecs.open(training_set,"r",  encoding='utf8')
     maxlen = 0
     for line in fin:
         sent = (line.strip().replace("\n", ' ').split('\t'))[0]
@@ -45,11 +48,11 @@ def Certainty(statement):
     sequences = tokenizer.texts_to_sequences(texts_test_1)
     texts_test = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
 
-    json_file = open('model.json', 'r')
+    json_file = open(model_json, 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     model = model_from_json(loaded_model_json)
-    model.load_weights("model.h5")
+    model.load_weights(model_h5)
     model.compile(loss="binary_crossentropy", optimizer="rmsprop")
 
     # Evaluate model
