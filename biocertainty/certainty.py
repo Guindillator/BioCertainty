@@ -22,11 +22,11 @@ def Certainty(statement):
 
     texts = []  # list of text samples
     labels_index = {}  # dictionary mapping label name to numeric id
-    fin = io.open(training_set, mode="r",  encoding='utf8')
+    fin = (io.open(training_set, mode="r",  encoding='utf8')).splitlines()
     maxlen = 0
     for line in fin:
         print line
-        sent = (line.strip().split('\t'))
+        sent = (line.strip().replace('\n', ' '))
         sent = [x for x in nltk.word_tokenize(sent) if x not in stopwords]
         texts.append(' '.join(sent))
         if len(sent) > maxlen:
