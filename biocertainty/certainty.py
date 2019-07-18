@@ -11,8 +11,8 @@ from keras.models import model_from_json
 import pkgutil
 
 training_set = pkgutil.get_data("", "training_set.csv")
-model_json = pkgutil.get_data("biocertainty", "model.json")
-model_h5 = pkgutil.get_data("biocertainty", "model.h5")
+model_json = pkgutil.get_data("", "model.json")
+model_h5 = pkgutil.get_data("", "model.h5")
 
 
 def Certainty(statement):
