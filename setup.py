@@ -44,6 +44,5 @@ setup(name='biocertainty',
         'pytest',
         'pytest-cov',
         'pycodestyle',
-    ],
-    zip_safe = False
+    ]
 )
