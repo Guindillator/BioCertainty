@@ -1,4 +1,3 @@
-from setuptools import setup	
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -13,19 +12,17 @@ with open('requirements.txt') as f:
 
 
 setup(name='biocertainty',	
-  version='0.1.0',	
-  description='Python package that provides the certainty about biomedical statements.',	
-  url='https://github.com/Guindillator/BioCertainty',	
-  author='Mario Prieto',	
-  author_email='mario.prieto@upm.es',	
-  license='Wilkinson Laboratory',
-  packages=[
-        'biocertainty',
-    ],
-  package_dir={'biocertainty':
+    version='0.1.0',	
+    description='Python package that provides the certainty about biomedical statements.',	
+    url='https://github.com/Guindillator/BioCertainty',	
+    author='Mario Prieto',	
+    author_email='mario.prieto@upm.es',	
+    license='Wilkinson Laboratory',
+    packages=['biocertainty'],
+    package_dir={'biocertainty':
                  'biocertainty'},	
-  zip_safe=False,
-  classifiers=[
+    zip_safe=False,
+    classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
@@ -47,5 +44,6 @@ setup(name='biocertainty',
         'pytest',
         'pytest-cov',
         'pycodestyle',
-    ]
+    ],
+    zip_safe = False
 )
