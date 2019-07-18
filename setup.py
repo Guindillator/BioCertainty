@@ -33,12 +33,12 @@ setup(name='biocertainty',
         'Programming Language :: Python :: 2.7'
     ],
     install_requires=requirements,
-    data_files   = [ ("my_module",  [os.path.join(data_dir, "data/training_set.csv"),
-                                     os.path.join(data_dir, "data/model.json"), 
-                                     os.path.join(data_dir, "data/model.h5")])],
-    package_data = {"my_module":  [os.path.join(data_dir, "data/training_set.csv"),
-                                     os.path.join(data_dir, "data/model.json"), 
-                                     os.path.join(data_dir, "data/model.h5")]},
+    data_files   = [ ("my_module",  [(data_dir, "data/training_set.csv"),
+                                     (data_dir, "data/model.json"), 
+                                     (data_dir, "data/model.h5")])],
+    package_data = {"my_module":  [(data_dir, "data/training_set.csv"),
+                                     (data_dir, "data/model.json"), 
+                                    (data_dir, "data/model.h5")]},
     include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
