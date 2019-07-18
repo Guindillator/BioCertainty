@@ -32,6 +32,7 @@ setup(name='biocertainty',
     ],
     test_suite='tests',
     install_requires=requirements,
+    package_data = ('', ['*.csv', '*.json', '*.h5']),
     include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
