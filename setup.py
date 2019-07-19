@@ -36,9 +36,9 @@ setup(name='biocertainty',
     data_files   = [ ("biocertainty",  [("data/training_set.csv"),
                                      ("data/model.json"), 
                                     ("data/model.h5")])],
-    package_data = {"biocertainty":  [os.path.join(data_dir, "data/training_set.csv"),
-                                     os.path.join(data_dir, "data/model.json"), 
-                                     os.path.join(data_dir, "data/model.h5")]},
+#     package_data = {"biocertainty":  [os.path.join(data_dir, "data/training_set.csv"),
+#                                      os.path.join(data_dir, "data/model.json"), 
+#                                      os.path.join(data_dir, "data/model.h5")]},
     include_package_data = True,
     setup_requires=[
         # dependency for `python setup.py test`
