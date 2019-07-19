@@ -1,5 +1,0 @@
-include README.md
-include docs/*.md
-include data/model.json
-include data/model.h5
-include data/training_set.csv
