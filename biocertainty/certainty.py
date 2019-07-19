@@ -8,6 +8,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.utils import to_categorical
 from keras.models import model_from_json
+import os, sys
 import pkgutil
 
 data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-package/biocertainty")
