@@ -12,9 +12,12 @@ import os, sys
 import pkgutil
 
 data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-packages/biocertainty")
-training_set = pkgutil.get_data('biocertainty', "training_set.csv")
-model_json = pkgutil.get_data('biocertainty', "model.json")
-model_h5 = pkgutil.get_data('biocertainty', "model.h5")
+training_set = data_dir+'/training_set.csv'
+model_json = data_dir+'/model_json.csv'
+model_h5 = data_dir+'/model_h5.csv'
+# training_set = pkgutil.get_data('biocertainty', "training_set.csv")
+# model_json = pkgutil.get_data('biocertainty', "model.json")
+# model_h5 = pkgutil.get_data('biocertainty', "model.h5")
 
 def Certainty(statement):
     statement = statement
