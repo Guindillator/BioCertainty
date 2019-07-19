@@ -11,7 +11,7 @@ from keras.models import model_from_json
 import os, sys
 import pkgutil
 
-data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-package/biocertainty")
+data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-packages/biocertainty")
 training_set = pkgutil.get_data(data_dir, "training_set.csv")
 model_json = pkgutil.get_data(data_dir "model.json")
 model_h5 = pkgutil.get_data(data_dir, "model.h5")
