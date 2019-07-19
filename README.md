@@ -4,7 +4,7 @@
 Install via `pip`:
 
 ```
-pip install git+https://github.com/Guindillator/BioCertainty.git
+sudo pip install git+https://github.com/Guindillator/BioCertainty.git
 ```
 
  - TODO: add to [PyPI](https://pypi.org/)
