@@ -12,7 +12,7 @@
 # with open('requirements.txt') as f:
 #     requirements = f.read().splitlines()
 
-# data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-package/biocertainty")
+data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-package/biocertainty")
 
 # setup(name='biocertainty',  
 #     version='0.1.0',    
@@ -85,9 +85,18 @@ setup(name='biocertainty',
         'Programming Language :: Python :: 2.7'
     ],
     test_suite='tests',
-    install_requires=requirements,
-    data_files=[('', ['data/training_set.csv'])],
-    package_data = {'': ['data/training_set.csv']},
+#     install_requires=requirements,
+#     data_files=[('', ['data/training_set.csv'])],
+#     package_data = {'': ['data/training_set.csv']},
+          data_files   = [ ("biocertainty",  [("data/training_set.csv"),
+                                     ("data/model.json"), 
+                                    ("data/model.h5")])],
+    package_data = {"biocertainty":  [( "data/training_set.csv"),
+                                     ( "data/model.json"), 
+                                     ( "data/model.h5")]},
+# #     package_data = {"biocertainty":  [os.path.join(data_dir, "data/training_set.csv"),
+# #                                      os.path.join(data_dir, "data/model.json"), 
+# #                                      os.path.join(data_dir, "data/model.h5")]},
     include_package_data = True, 
     setup_requires=[
         # dependency for `python setup.py test`
