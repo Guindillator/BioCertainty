@@ -11,7 +11,7 @@ with open('README.md') as readme_file:
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
 
-data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-package/biocertainty")
+data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-packages/biocertainty")
 
     
 setup(name='biocertainty',	
