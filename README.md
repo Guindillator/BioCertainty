@@ -9,13 +9,6 @@ sudo pip install git+https://github.com/Guindillator/BioCertainty.git
 
  - TODO: add to [PyPI](https://pypi.org/)
 
-## Necessary files
-Download and set in your working directory
-
-trainig_set.csv
-model.json
-model.h5
-
 ## Usage example
 ```python
 Import biocertainty as B
