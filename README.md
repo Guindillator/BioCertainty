@@ -4,6 +4,7 @@
 Install via `pip`:
 
 ```
+sudo pip install biocertainty
 sudo pip install git+https://github.com/Guindillator/BioCertainty.git
 ```
 
