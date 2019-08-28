@@ -58,15 +58,13 @@ def Certainty(statement):
     # Evaluate model
     predictioncm = model.predict_classes(texts_test)
     predictioncm1 = []
-    enumerador = []
     for l, p in enumerate(predictioncm):
         if p == 0:
-            predictioncm1.append(1)
+            predictioncm1.append("CategoryA")
         if p == 1:
-            predictioncm1.append(0)
+            predictioncm1.append("CategoryB")
         if p == 2:
-            predictioncm1.append(-1)
-        enumerador.append(l)
+            predictioncm1.append("CategoryC")
     x = zip(predictioncm1, texts_test_1)
     print ('Level of Certainty: %s -- %s') % (predictioncm1[0], texts_test_1[0])
 
