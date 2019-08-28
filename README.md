@@ -30,7 +30,7 @@ micropublication = B.Micropublication (a, b)
 * Documentation can be found in the `docs` folder.
 
 ## Software citation
-Mario Prieto Godoy & Mark Wilkinson. (2019, August 19). Guindillator/BioCertainty: First release of BioCertainty package (Version v1.0.4). Zenodo. http://doi.org/10.5281/zenodo.3379944
+Mario Prieto Godoy & Mark Wilkinson. (2019, August 19). Guindillator/BioCertainty: First release of BioCertainty package (Version v1.0.4). Zenodo. http://doi.org/10.5281/zenodo.3380373
 
 # License
 Copyright (c) 2019, Wilkinson Laboratory for Biological Informatics
