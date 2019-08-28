@@ -72,6 +72,7 @@ sub:pubinfo {6}
     """).format(index, doi, md5.new(CLAIM).hexdigest(), categorization, text, datetime.date.today(), '{', '}', this, CLAIM)
             return nanopub, index
         else:
+	    pmc = pmc_doi
             text = ("https://www.ebi.ac.uk/europepmc/webservices/rest/%s/fullTextXML") % (pmc)
             url = ("https://www.ncbi.nlm.nih.gov/pmc/articles/%s") % (pmc)
             nanopub = ("""@prefix this: <{8}CertID_{0}> .
