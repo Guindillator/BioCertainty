@@ -44,7 +44,7 @@ sub:Head {6}
 
 sub:assertion {6}
 		certainty:asserts-{0} rdf:singletonPropertyOf certainty:asserts .
-		thispub: certainty:asserts-{0} "{10}" .
+		thispub: certainty:asserts-{0} "{9}" .
 		thispub: certainty:hasConfidenceLevel certainty:{3} .
 {7}
 
@@ -62,14 +62,14 @@ sub:provenance {6}
 {7}
 
 sub:pubinfo {6}
-        this: dcterms:created '{5}'^^xsd:dateTime ;
+        this: dcterms:created '{5}'^^xsd:date ;
         dcterms:rights <https://creativecommons.org/publicdomain/zero/1.0> ;
         dcterms:rightsHolder <https://orcid.org/0000-0002-9416-6743> ;
         pav:authoredBy "Mario Prieto" , <https://orcid.org/0000-0002-9416-6743> ;
         pav:versionNumber "1" ;
         prov:wasGeneratedBy "Mario Prieto's Certainty Classifier" .
 {7}
-    """).format(index, doi, md5.new(CLAIM).hexdigest(), categorization, text, datetime.date.today(), '{', '}', this, url, CLAIM)
+    """).format(index, doi, md5.new(CLAIM).hexdigest(), categorization, text, datetime.date.today(), '{', '}', this, CLAIM)
             return nanopub, index
         else:
             text = ("https://www.ebi.ac.uk/europepmc/webservices/rest/%s/fullTextXML") % (pmc)
@@ -117,7 +117,7 @@ sub:provenance {6}
 {7}
 
 sub:pubinfo {6}
-        this: dcterms:created '{5}'^^xsd:dateTime ;
+        this: dcterms:created '{5}'^^xsd:date ;
         dcterms:rights <https://creativecommons.org/publicdomain/zero/1.0> ;
         dcterms:rightsHolder <https://orcid.org/0000-0002-9416-6743> ;
         pav:authoredBy "Mario Prieto" , <https://orcid.org/0000-0002-9416-6743> ;
