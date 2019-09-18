@@ -15,22 +15,37 @@ training_set = data_dir+'/training_set.csv'
 model_json = data_dir+'/model.json'
 model_h5 = data_dir+'/model.h5'
 
+MAX_NB_WORDS = 6660
+stopwords = nltk.corpus.stopwords.words('english')
+
+texts = []  # list of text samples
+labels_index = {}  # dictionary mapping label name to numeric id
+fin = (codecs.open(training_set, "r",  encoding='utf8'))
+maxlen = 0
+for line in fin:
+    sent = (line.strip().replace('\n', ' '))
+    sent = [x for x in nltk.word_tokenize(sent) if x not in stopwords]
+    texts.append(' '.join(sent))
+    if len(sent) > maxlen:
+        maxlen = len(sent)
+fin.close()
+
+MAX_SEQUENCE_LENGTH = maxlen
+
+tokenizer = Tokenizer(num_words=MAX_NB_WORDS)
+tokenizer.fit_on_texts(texts)
+
+json_file = open(model_json, 'r')
+loaded_model_json = json_file.read()
+json_file.close()
+model = model_from_json(loaded_model_json)
+model.load_weights(model_h5)
+model.compile(loss="binary_crossentropy", optimizer="rmsprop")
+
+
+
 def Certainty(statement):
     statement = statement
-    MAX_NB_WORDS = 6660
-    stopwords = nltk.corpus.stopwords.words('english')
-
-    texts = []  # list of text samples
-    labels_index = {}  # dictionary mapping label name to numeric id
-    fin = (codecs.open(training_set, "r",  encoding='utf8'))
-    maxlen = 0
-    for line in fin:
-        sent = (line.strip().replace('\n', ' '))
-        sent = [x for x in nltk.word_tokenize(sent) if x not in stopwords]
-        texts.append(' '.join(sent))
-        if len(sent) > maxlen:
-            maxlen = len(sent)
-
 
     j = [statement]
     texts_test_1 = []  # list of text samples
@@ -38,22 +53,9 @@ def Certainty(statement):
         sent = line.strip()
         sent = [x for x in nltk.word_tokenize(sent) if x not in stopwords]
         texts_test_1.append(' '.join(sent))
-        
-    fin.close()   
 
-    MAX_SEQUENCE_LENGTH = maxlen
-
-    tokenizer = Tokenizer(num_words=MAX_NB_WORDS)
-    tokenizer.fit_on_texts(texts)
     sequences = tokenizer.texts_to_sequences(texts_test_1)
     texts_test = pad_sequences(sequences, maxlen=MAX_SEQUENCE_LENGTH)
-
-    json_file = open(model_json, 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
-    model = model_from_json(loaded_model_json)
-    model.load_weights(model_h5)
-    model.compile(loss="binary_crossentropy", optimizer="rmsprop")
 
     # Evaluate model
     predictioncm = model.predict_classes(texts_test)
