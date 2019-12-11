@@ -15,7 +15,7 @@ data_dir = os.path.join(sys.prefix, "local/lib/python2.7/dist-packages/biocertai
 
     
 setup(name='biocertainty',	
-    version='1.0.6',	
+    version='1.0.7',	
     description='Python package that provides the certainty about biomedical statements.',	
     url='https://github.com/Guindillator/BioCertainty',	
     author='Mario Prieto',	
