@@ -33,7 +33,7 @@ def Nanopublication(pmc_doi, CLAIM, this):
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
 @prefix thispub: <https://dx.doi.org/{1}#> .
-@prefix certainty: <http://w3id.org/orca-x#> .
+@prefix orca-x: <http://w3id.org/orca-x#> .
 
 sub:Head {6}
         this: np:hasAssertion sub:assertion ;
@@ -43,9 +43,9 @@ sub:Head {6}
 {7}
 
 sub:assertion {6}
-		certainty:asserts-{0} rdf:singletonPropertyOf certainty:asserts .
-		thispub: certainty:asserts-{0} "{9}" .
-		thispub: certainty:hasConfidenceLevel certainty:{3} .
+		orca-x:asserts-{0} rdf:singletonPropertyOf orca-x:asserts .
+		thispub: orca-x:asserts-{0} "{9}" .
+		orca-x:asserts-{0} orca-x:hasConfidenceLevel orca-x:{3} .
 {7}
 
 sub:provenance {6}   
@@ -53,7 +53,8 @@ sub:provenance {6}
         dcterms:title "Automated Certainty Classification of Statement from https:dx.doi.org/{1}" ;
         dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
         schema:identifier this: ;
-        dcat:distribution sub:_1 .
+        dcat:distribution sub:assertion ;
+        prov:wasDerivedFrom sub:_1 .
 
         sub:_1   dcelem:format "application/pdf" ;
         a void:Dataset , dcat:Distribution ;
@@ -88,7 +89,7 @@ sub:pubinfo {6}
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix schema: <https://schema.org/> .
-@prefix certainty: <http://w3id.org/orca-x#> .
+@prefix orca-x: <http://w3id.org/orca-x#> .
 @prefix thispub: <{9}> .
 
 sub:Head {6}
@@ -99,9 +100,9 @@ sub:Head {6}
 {7}
 
 sub:assertion {6}
-		certainty:asserts-{0} rdf:singletonPropertyOf certainty:asserts .
-		thispub: certainty:asserts-{0} "{10}" .
-		thispub: certainty:hasConfidenceLevel certainty:{3} .
+		orca-x:asserts-{0} rdf:singletonPropertyOf orca-x:asserts .
+		thispub: orca-x:asserts-{0} "{10}" .
+		orca-x:asserts-{0} orca-x:hasConfidenceLevel orca-x:{3} .
 {7}
 
 sub:provenance {6}   
@@ -109,7 +110,8 @@ sub:provenance {6}
         dcterms:title "Automated Certainty Classification of Statement from {9}" ;
         dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
         schema:identifier this: ;
-        dcat:distribution sub:_1 .
+        dcat:distribution sub:assertion ;
+        prov:wasDerivedFrom sub:_1 .
 
         sub:_1   dcelem:format "application/pdf" ;
         a void:Dataset , dcat:Distribution ;
