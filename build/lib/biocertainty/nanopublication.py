@@ -12,33 +12,28 @@ import datetime
 RE = '(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?!["&\'<>])\S)+)'
 
 
-def Nanopublication(pmc_doi, CLAIM):
+def Nanopublication(pmc_doi, CLAIM, this):
     categorization = Certainty(CLAIM)
     doi = doi_pmc_seeker(pmc_doi)
     index = str(uuid.uuid1()) 
     try:
         if bool(re.match(RE, doi)) == True:
             text = ("https://dx.doi.org/%s") % (doi)
-            nanopub = ("""@prefix this: <http://linkeddata.systems/nanopubs_mario/CertID_{0}> .
-@prefix sub: <http://linkeddata.systems/nanopubs_mario/CertID_{0}#> .
+            nanopub = ("""@prefix this: <{8}CertID_{0}> .
+@prefix sub: <{8}CertID_{0}#> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dcelem: <http://purl.org/dc/elements/1.1/> .
 @prefix np: <http://www.nanopub.org/nschema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix pav: <http://swan.mindinformatics.org/ontologies/1.2/pav/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix swande: <http://purl.org/swan/1.2/discourse-elements/> .
-@prefix swanco: <http://purl.org/swan/1.2/swan-commons/> .
 @prefix schema: <https://schema.org/> .
-@prefix orca: <http://vocab.deri.ie/orca#/> .
-@prefix doi: <http://dx.doi.org/> .
-@prefix text: <https://dx.doi.org/{1}#> .
-@prefix swanqual: <http://swan.mindinformatics.org/ontologies/1.2/rsqualifiers/> .
-@prefix certainty: <http://w3id.org/orca-x#> .
+@prefix thispub: <https://dx.doi.org/{1}#> .
+@prefix orca-x: <http://w3id.org/orca-x#> .
 
 sub:Head {6}
         this: np:hasAssertion sub:assertion ;
@@ -48,54 +43,54 @@ sub:Head {6}
 {7}
 
 sub:assertion {6}
-        <https://dx.doi.org/{1}/#{2}> sio:has-value 'CertID_{0}'@en' .
-        <https://dx.doi.org/{1}/#{2}> certainty:hasConfidenceLevel '{3}'@en .
+		orca-x:asserts-{0} rdf:singletonPropertyOf orca-x:asserts .
+		thispub: orca-x:asserts-{0} "{9}" .
+		orca-x:asserts-{0} orca-x:hasConfidenceLevel orca-x:{3} .
 {7}
 
 sub:provenance {6}   
         sub:assertion dcterms:author "Certainty Classifier" ;
         dcterms:title "Automated Certainty Classification of Statement from https:dx.doi.org/{1}" ;
-        dcat:distribution sub:_1 ;
-        prov:wasGeneratedBy "Mario Prieto's Certainty Classifier" ;
-        certainty:hasConfidenceLevel  certainty:{3} .
+        dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+        schema:identifier this: ;
+        dcat:distribution sub:assertion ;
+        prov:wasDerivedFrom sub:_1 .
 
         sub:_1   dcelem:format "application/pdf" ;
         a void:Dataset , dcat:Distribution ;
-        schema:identifier '{1}' ;
         dcat:downloadURL <{4}> .
 
 {7}
 
 sub:pubinfo {6}
-        this: dcterms:created '{5}'^^xsd:dateTime ;
+        this: dcterms:created '{5}'^^xsd:date ;
         dcterms:rights <https://creativecommons.org/publicdomain/zero/1.0> ;
         dcterms:rightsHolder <https://orcid.org/0000-0002-9416-6743> ;
         pav:authoredBy "Mario Prieto" , <https://orcid.org/0000-0002-9416-6743> ;
-        pav:versionNumber "1" .
+        pav:versionNumber "1" ;
+        prov:wasGeneratedBy "Mario Prieto's Certainty Classifier" .
 {7}
-    """).format(index, doi, md5.new(CLAIM).hexdigest(), categorization, text, datetime.date.today(), '{', '}')
+    """).format(index, doi, md5.new(CLAIM).hexdigest(), categorization, text, datetime.date.today(), '{', '}', this, CLAIM)
             return nanopub, index
         else:
+            pmc = pmc_doi
             text = ("https://www.ebi.ac.uk/europepmc/webservices/rest/%s/fullTextXML") % (pmc)
-            nanopub = ("""@prefix this: <http://linkeddata.systems/nanopubs_mario/CertID_{0}> .
-@prefix sub: <http://linkeddata.systems/nanopubs_mario/CertID_{0}#> .
+            url = ("https://www.ncbi.nlm.nih.gov/pmc/articles/%s") % (pmc)
+            nanopub = ("""@prefix this: <{8}CertID_{0}> .
+@prefix sub: <{8}CertID_{0}#> .
 @prefix void: <http://rdfs.org/ns/void#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix dcelem: <http://purl.org/dc/elements/1.1/> .
 @prefix np: <http://www.nanopub.org/nschema#> .
-@prefix sio: <http://semanticscience.org/resource/> .
 @prefix pav: <http://swan.mindinformatics.org/ontologies/1.2/pav/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix swande: <http://purl.org/swan/1.2/discourse-elements/> .
-@prefix swanco: <http://purl.org/swan/1.2/swan-commons/> .
 @prefix schema: <https://schema.org/> .
-@prefix orca: <http://vocab.deri.ie/orca#/> .
-@prefix swanqual: <http://swan.mindinformatics.org/ontologies/1.2/rsqualifiers/> .
-@prefix text: <https://www.ebi.ac.uk/europepmc/webservices/rest/{1}/fullTextXML#> .
-@prefix certainty: <http://w3id.org/orca-x#> .
+@prefix orca-x: <http://w3id.org/orca-x#> .
+@prefix thispub: <{9}> .
 
 sub:Head {6}
         this: np:hasAssertion sub:assertion ;
@@ -105,32 +100,35 @@ sub:Head {6}
 {7}
 
 sub:assertion {6}
-        <https://www.ebi.ac.uk/europepmc/webservices/rest/{1}/fullTextXML/#{2}> sio:has-value 'CertID_{0}'@en' .
-        <https://www.ebi.ac.uk/europepmc/webservices/rest/{1}/fullTextXML/#{2}> certainty:hasConfidenceLevel '{3}'@en .
+		orca-x:asserts-{0} rdf:singletonPropertyOf orca-x:asserts .
+		thispub: orca-x:asserts-{0} "{10}" .
+		orca-x:asserts-{0} orca-x:hasConfidenceLevel orca-x:{3} .
 {7}
 
 sub:provenance {6}   
         sub:assertion dcterms:author "Certainty Classifier" ;
-        dcterms:title "Automated Certainty Classification of Statement from {6}4}" ;
-        dcat:distribution sub:_1 ;
-        prov:wasGeneratedBy "Mario Prieto's Certainty Classifier" ;
-        certainty:hasConfidenceLevel  certainty:{3} .
+        dcterms:title "Automated Certainty Classification of Statement from {9}" ;
+        dcterms:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+        schema:identifier this: ;
+        dcat:distribution sub:assertion ;
+        prov:wasDerivedFrom sub:_1 .
 
         sub:_1   dcelem:format "application/pdf" ;
         a void:Dataset , dcat:Distribution ;
-        schema:identifier '{1}' ;
-        dcat:downloadURL <{4}> .
+        dcat:downloadURL <{9}> .
 
 {7}
 
 sub:pubinfo {6}
-        this: dcterms:created '{5}'^^xsd:dateTime ;
+        this: dcterms:created '{5}'^^xsd:date ;
         dcterms:rights <https://creativecommons.org/publicdomain/zero/1.0> ;
         dcterms:rightsHolder <https://orcid.org/0000-0002-9416-6743> ;
         pav:authoredBy "Mario Prieto" , <https://orcid.org/0000-0002-9416-6743> ;
-        pav:versionNumber "1" .
+        pav:versionNumber "1" ;
+        prov:wasGeneratedBy "Mario Prieto's Certainty Classifier" .
+
 {7}
-    """).format(index, pmc, md5.new(CLAIM).hexdigest(), categorization, text, datetime.date.today(), '{', '}')
+    """).format(index, pmc, md5.new(CLAIM).hexdigest(), categorization, text, datetime.date.today(), '{', '}', this, url, CLAIM)
             return nanopub, index
 
     except AssertionError as error:
