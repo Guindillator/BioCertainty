@@ -22,6 +22,8 @@ setup(name='biocertainty',
     author_email='mario.prieto@upm.es',	
     license='Wilkinson Laboratory',
     packages=find_packages(),
+    install_requires=requirements,
+    long_description=readme,
     package_dir={'biocertainty':
                  'biocertainty'},	
     zip_safe=False,
